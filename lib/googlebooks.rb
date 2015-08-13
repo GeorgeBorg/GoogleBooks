@@ -7,6 +7,7 @@ require 'cgi'
 module GoogleBooks
 
   include HTTParty
+  default_options.update(verify: false)
   format :json
   
   class << self
@@ -53,7 +54,7 @@ module GoogleBooks
     # Queries the new Google API. The former Google Book Search API is deprecated
     # http://code.google.com/apis/books/docs/gdata/developers_guide_protocol.html
     def url
-      URI::HTTP.build(:host  => 'www.googleapis.com',
+      URI::HTTPS.build(:host  => 'www.googleapis.com',
                       :path  => '/books/v1/volumes',
                       :query => query)
     end
