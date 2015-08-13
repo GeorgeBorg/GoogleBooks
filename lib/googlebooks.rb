@@ -38,7 +38,7 @@ module GoogleBooks
       parameters['key'] = options[:api_key] if options[:api_key]
       parameters['orderBy'] = 'newest' if options[:order_by].eql?('newest')
       parameters['country'] = options[:country] if options[:country]
-      puts url.to_s
+
       Response.new(get(url.to_s))
     end
 
@@ -53,7 +53,7 @@ module GoogleBooks
     # Queries the new Google API. The former Google Book Search API is deprecated
     # http://code.google.com/apis/books/docs/gdata/developers_guide_protocol.html
     def url
-      URI::HTTPS.build(:host  => 'www.googleapis.com',
+      URI::HTTP.build(:host  => 'www.googleapis.com',
                       :path  => '/books/v1/volumes',
                       :query => query)
     end
