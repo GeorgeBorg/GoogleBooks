@@ -56,6 +56,7 @@ module GoogleBooks
       URI::HTTPS.build(:host  => 'www.googleapis.com',
                       :path  => '/books/v1/volumes',
                       :query => query)
+      puts url
     end
   end
 end
